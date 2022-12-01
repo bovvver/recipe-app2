@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import mq from "../../../assets/responsiveDesign";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -38,10 +39,19 @@ export const Wrapper = styled.div`
     color: ${({ theme }) => theme.colors.black};
     text-decoration: underline;
   }
+
+  ${mq[2]} {
+    grid-column: 2/-1;
+    grid-row: 1/-1;
+  }
 `;
 
 export const Recipe = styled.p`
   max-width: 90%;
   font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.black};
+
+  ${mq[0]} {
+    font-size: 1.8rem;
+  }
 `;

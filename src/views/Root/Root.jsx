@@ -4,14 +4,19 @@ import { ThemeProvider } from "styled-components";
 import Main from "../Main/Main";
 import RecipePage from "../RecipePage/RecipePage";
 import theme from "../../assets/theme";
+import ContextProvider from "../../providers/ContextProvider";
+import Footer from "../../components/molecules/Footer/Footer";
 
 const Root = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {/* <Main /> */}
-      <RecipePage />
-    </ThemeProvider>
+    <ContextProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Main />
+        {/* <RecipePage /> */}
+        <Footer />
+      </ThemeProvider>
+    </ContextProvider>
   );
 };
 
