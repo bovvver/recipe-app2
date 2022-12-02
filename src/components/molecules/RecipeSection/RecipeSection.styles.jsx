@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   align-items: center;
   border: 2px solid ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.lightGray};
+  font-size: 1.6rem;
 
   &::after,
   &::before {
@@ -19,6 +20,7 @@ export const Wrapper = styled.div`
     height: 4em;
     border-radius: 50%;
     border: 2px solid ${({ theme }) => theme.colors.white};
+    font-size: 1.4rem;
   }
 
   &::after {
@@ -40,18 +42,12 @@ export const Wrapper = styled.div`
     text-decoration: underline;
   }
 
+  ${mq[0]} {
+    font-size: 1.8rem;
+  }
+
   ${mq[2]} {
     grid-column: 2/-1;
     grid-row: 1/-1;
-  }
-`;
-
-export const Recipe = styled.p`
-  max-width: 90%;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.black};
-
-  ${mq[0]} {
-    font-size: 1.8rem;
   }
 `;

@@ -2,11 +2,11 @@ import React from "react";
 import { Wrapper, Image } from "./ImageSection.styles";
 import SectionTitle from "../../atoms/SectionTitle/SectionTitle";
 
-const ImageSection = () => {
+const ImageSection = ({ title, image }) => {
   return (
     <Wrapper>
-      <SectionTitle title="Meal title" />
-      <Image />
+      <SectionTitle title={title} />
+      <Image image={image} />
     </Wrapper>
   );
 };

@@ -17,6 +17,9 @@ export const Image = styled.div`
   width: 27em;
   aspect-ratio: 1/1;
   border: 3px solid ${({ theme }) => theme.colors.white};
+  background-image: url(${({ image }) => image});
+  background-position: center;
+  background-size: cover;
 
   ${mq[0]} {
     width: 33em;

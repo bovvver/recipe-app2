@@ -7,7 +7,9 @@ export const CardBody = styled.div`
   width: 30em;
   max-width: 95%;
   height: 20em;
-  background-color: ${({ theme }) => theme.colors.gray};
+  background-image: url(${({ photo }) => photo});
+  background-position: center;
+  background-size: cover;
   border: 2px solid ${({ theme }) => theme.colors.white};
   cursor: pointer;
   transform-origin: top center;
@@ -43,9 +45,12 @@ export const CardBody = styled.div`
 `;
 
 export const CardTitle = styled.h3`
+  padding: 0.2em;
+  width: 100%;
   position: absolute;
-  left: 0.1em;
-  bottom: 0.1em;
+  left: 0;
+  bottom: 0;
   color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.shadow};
   font-size: 2rem;
 `;

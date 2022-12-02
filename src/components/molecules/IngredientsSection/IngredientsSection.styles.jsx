@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     position: relative;
     font-size: 1.8rem;
     margin-top: 0.3em;
+    text-align: center;
 
     &::after {
       content: "";
