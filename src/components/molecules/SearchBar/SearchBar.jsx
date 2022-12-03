@@ -4,9 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Result } from "../../../providers/ResultsContext";
 import axios from "axios";
+import { Errors } from "../../../providers/ErrorContext";
 
 const SearchBar = () => {
   const { setResults } = useContext(Result);
+  const { handleError } = useContext(Errors);
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e) => {
@@ -22,9 +24,11 @@ const SearchBar = () => {
           }&number=6`
         )
         .then((res) => {
-          setResults(res.data.results);
+          res.data.results.length !== 0
+            ? setResults(res.data.results)
+            : handleError(`Could not find any ${inputValue} recipes`);
         })
-        .catch((err) => console.error(err));
+        .catch(() => handleError("Could not use the service right now."));
     } else {
       console.log("input empty!");
     }

@@ -42,6 +42,11 @@ export const Wrapper = styled.div`
     text-decoration: underline;
   }
 
+  ul,
+  ol {
+    list-style-position: inside;
+  }
+
   ${mq[0]} {
     font-size: 1.8rem;
   }

@@ -7,11 +7,18 @@ export const Wrapper = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colors.white};
 
+  ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   li {
     position: relative;
     font-size: 1.8rem;
     margin-top: 0.3em;
     text-align: center;
+    list-style: none;
 
     &::after {
       content: "";
