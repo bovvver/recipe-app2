@@ -12,12 +12,17 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
     }
     body{
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Pangolin", cursive;
     }
     
     #root{
+        position: relative;
         width: 100%;
         min-height: 100vh;
         overflow-x: hidden;
+        background: ${({ theme }) => theme.colors.blackGradient};
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
     }
 `;
