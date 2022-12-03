@@ -3,6 +3,7 @@ import { GlobalStyle } from "../../assets/globalStyle";
 import { ThemeProvider } from "styled-components";
 import Main from "../Main/Main";
 import RecipePage from "../RecipePage/RecipePage";
+import NotFound from "../NotFound/NotFound";
 import theme from "../../assets/theme";
 import ContextProvider from "../../providers/ContextProvider";
 import Footer from "../../components/molecules/Footer/Footer";
@@ -17,7 +18,7 @@ const Root = () => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/recipe/:id" element={<RecipePage />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </ThemeProvider>

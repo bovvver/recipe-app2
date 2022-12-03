@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import Background from "../assets/images/background-large.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     *,
@@ -21,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         min-height: 100vh;
         overflow-x: hidden;
-        background-image: url(${Background});
+        background: ${({ theme }) => theme.colors.blackGradient};
         background-position: center;
         background-size: cover;
         background-attachment: fixed;

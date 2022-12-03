@@ -4,7 +4,6 @@ import { Wrapper } from "./RecipeSection.styles";
 import parse from "html-react-parser";
 
 const RecipeSection = ({ content }) => {
-  console.log(typeof content);
   return (
     <Wrapper>
       <SectionTitle title="Recipe" />

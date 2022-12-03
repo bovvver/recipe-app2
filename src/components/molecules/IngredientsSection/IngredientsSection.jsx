@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import SectionTitle from "../../atoms/SectionTitle/SectionTitle";
-import { Wrapper, BackButton } from "./IngredientsSection.styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Wrapper } from "./IngredientsSection.styles";
 import { SizeContext } from "../../../providers/WindowContext";
-import { useNavigate } from "react-router-dom";
+import BackButton from "../../atoms/BackButton/BackButton";
 
 const IngredientsSection = ({ list }) => {
-  const navigate = useNavigate();
   const { screenWidth } = useContext(SizeContext);
   let liIndex = 0;
 
@@ -19,12 +16,7 @@ const IngredientsSection = ({ list }) => {
           ? null
           : list.map((el) => <li key={liIndex++}>{el.original}</li>)}
       </ul>
-      {screenWidth >= 1024 ? (
-        <BackButton onClick={() => navigate("/")}>
-          <FontAwesomeIcon icon={faArrowLeft} />
-          back
-        </BackButton>
-      ) : null}
+      {screenWidth >= 1024 ? <BackButton /> : null}
     </Wrapper>
   );
 };

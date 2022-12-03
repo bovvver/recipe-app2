@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Wrapper } from "./RecipePage.styles";
 import ImageSection from "../../components/molecules/ImageSection/ImageSection";
 import IngredientsSection from "../../components/molecules/IngredientsSection/IngredientsSection";
 import RecipeSection from "../../components/molecules/RecipeSection/RecipeSection";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { LoadingCtx } from "../../providers/LoadingContext";
+import { Errors } from "../../providers/ErrorContext";
+import Loading from "../../components/atoms/Loading/Loading";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   title: "",
@@ -14,10 +18,14 @@ const initialState = {
 };
 
 const RecipePage = () => {
+  const navigate = useNavigate();
+  const { handleError } = useContext(Errors);
+  const { loading, setLoading } = useContext(LoadingCtx);
   const { id } = useParams();
   const [recipeObject, setRecipeObject] = useState({ ...initialState });
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${
@@ -25,6 +33,7 @@ const RecipePage = () => {
         }`
       )
       .then((res) => {
+        setLoading(false);
         setRecipeObject({
           title: res.data.title,
           image: res.data.image,
@@ -32,18 +41,24 @@ const RecipePage = () => {
           instructions: res.data.instructions,
         });
       })
-      .catch((err) => console.error(err));
+      .catch(() => {
+        setLoading(false);
+        navigate("/");
+        handleError("Could not fetch data.");
+      });
   }, []);
 
   return (
     <Wrapper>
-      {JSON.stringify(initialState) !== JSON.stringify(recipeObject) ? (
+      {!loading ? (
         <>
           <ImageSection title={recipeObject.title} image={recipeObject.image} />
           <IngredientsSection list={recipeObject.ingredients} />
           <RecipeSection content={recipeObject.instructions} />
         </>
-      ) : null}
+      ) : (
+        <Loading />
+      )}
     </Wrapper>
   );
 };
