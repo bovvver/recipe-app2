@@ -6,7 +6,8 @@
 </a>
 <h2>recipe-app2 🍕</h2>
 <p>
-Type in the recipe you are looking for and find something <strong>tasty</strong> for you!
+Type in the recipe you are looking for and find something <strong>tasty</strong> for you!<br/><br/>
+<img src="/public/appGif.gif" />
 </div>
 
 ## Installation
