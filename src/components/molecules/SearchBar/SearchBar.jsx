@@ -17,26 +17,25 @@ const SearchBar = () => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (inputValue.length !== 0) {
       setLoading(true);
-      axios
-        .get(
+      try {
+        const res = await axios.get(
           `https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}&apiKey=${
             import.meta.env.VITE_API_KEY
           }&number=6`
-        )
-        .then((res) => {
-          setLoading(false);
-          res.data.results.length !== 0
-            ? setResults(res.data.results)
-            : handleError(`Could not find any ${inputValue} recipes`);
-        })
-        .catch(() => {
-          setLoading(false);
-          handleError("Could not use the service right now.");
-        });
+        );
+        setLoading(false);
+        res.data.results.length !== 0
+          ? setResults(res.data.results)
+          : (handleError(`Could not find any ${inputValue} recipes`),
+            setResults([]));
+      } catch (error) {
+        setLoading(false);
+        handleError("Could not use the service right now.");
+      }
     } else {
       handleError("Search bar is empty.");
     }
